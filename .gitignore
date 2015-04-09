@@ -1,0 +1,6 @@
+*.o
+*.tar.gz
+*.tgz
+*.zip
+*.log
+output*.txt
