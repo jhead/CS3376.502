@@ -1,0 +1,45 @@
+#!/bin/bash
+## Author: Justin Head
+## jxh122430@utdallas.edu
+## SE3376.502
+
+## Source files
+FILES="main other"
+OBJS=""
+
+## Prepare
+echo "Preparing... "
+rm -rf ./lib ./bin
+mkdir -p lib bin
+echo
+
+for f in $FILES; do
+	## Check if source files exist
+	if [ ! -e "./src/$f.cc" ]; then
+		echo "$f.cc missing; exiting..."
+		exit 1
+	fi
+
+	## Compile sources
+	echo -n "Compiling $f.cc... "
+	g++ -c ./src/$f.cc -o "./lib/$f.o"
+
+	if [ $? -eq 0 ]; then
+		echo "Done!"
+		OBJS="$OBJS ./lib/$f.o"
+	else
+		echo "Failed: $?"
+		exit
+	fi
+done
+
+## Link files
+echo -n "Linking objects... "
+g++ -o ./bin/main $OBJS
+echo "Done!"
+
+##
+
+echo
+echo "Complete"
+

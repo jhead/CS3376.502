@@ -1,0 +1,24 @@
+#!/bin/bash
+## Author: Justin Head
+## jxh122430@utdallas.edu
+## SE3376.502
+
+EXEC="./bin/main"
+
+if [ ! -e $EXEC ]; then
+	echo "Executable missing. Please recompile using ./compile"
+	exit
+fi
+
+# Zero argv
+echo "Running main with zero args"
+$EXEC 2>>stderr.txt >>stdout.txt
+
+# One argv
+echo "Running main with one arg"
+$EXEC 0 2>>stderr.txt >>stdout.txt 
+
+# Five argv
+echo "Running main with five args"
+$EXEC five four three two one 2>>stderr.txt >>stdout.txt 
+
