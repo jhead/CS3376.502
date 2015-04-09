@@ -1,0 +1,3 @@
+Usage: ./program3
+
+NOTE: This program looks for gawk at ./gawk/bin/gawk using your current working directory
